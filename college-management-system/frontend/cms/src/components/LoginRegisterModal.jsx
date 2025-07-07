@@ -1,8 +1,11 @@
 // src/components/LoginRegisterModal.jsx
 import { useState } from 'react';
 import '../styles/loginRegisterModal.css';
+// import API from '../api/api';
 
-const LoginRegisterModal = ({ onClose }) => {
+// const LoginRegisterModal =
+const LoginRegisterModal = ({ onClose }) => {   // export default function LoginRegisterModal() {
+
   const [isLogin, setIsLogin] = useState(true);
   const [role, setRole] = useState('Student');
   const [course, setCourse] = useState('');
@@ -110,4 +113,60 @@ const LoginRegisterModal = ({ onClose }) => {
   );
 };
 
-export default LoginRegisterModal;
+ export default LoginRegisterModal;
+
+/*
+🔐 2. Login (GET Token from Backend)
+📄 components/LoginRegisterModal.jsx
+
+import React, { useState } from 'react';
+import API from '../api/api';
+
+export default function LoginRegisterModal() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const login = async () => {
+    try {
+      const res = await API.post('/login', { email, password });
+      localStorage.setItem('token', res.data.token);
+      alert('Login successful!');
+      // Redirect to dashboard
+      window.location.href = '/dashboard';
+    } catch (err) {
+      alert('Invalid login!');
+    }
+  };
+
+  return (
+    <div>
+      <h2>Login</h2>
+      <input placeholder="Email" onChange={e => setEmail(e.target.value)} />
+      <input placeholder="Password" type="password" onChange={e => setPassword(e.target.value)} />
+      <button onClick={login}>Login</button>
+    </div>
+  );
+}
+
+
+👤 3. Register (POST to Temp Storage MongoDB)
+Extend the same modal:
+
+const [name, setName] = useState('');
+const [role, setRole] = useState('');
+const [course, setCourse] = useState('');
+
+const register = async () => {
+  try {
+    const res = await API.post('/register-temp', {
+      name, email, password, role, course
+    });
+    alert(res.data.message);
+  } catch (err) {
+    alert('Registration failed or user already exists!');
+  }
+};
+
+
+
+*/

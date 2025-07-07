@@ -3,6 +3,13 @@ import logo from '../assets/logo.png';
 import '../styles/navbar.css';
 
 const Navbar = () => {
+/*
+  useEffect(() => {
+  const token = localStorage.getItem('token');
+  if (!token) window.location.href = '/login';
+}, []);
+*/
+
   return (
     <header>
       {/* Top bar with logo and name */}
@@ -21,6 +28,11 @@ const Navbar = () => {
           <li><a href="/facilities">Facilities</a></li>
           <li><a href="/placement">Placement</a></li>
           <li><a href="/contact">Contact</a></li>
+          <li> <button onClick={() => {
+                       localStorage.removeItem('token');
+                       window.location.href = '/';
+                  }}>Logout</button>
+          </li>
         </ul>
       </nav>
     </header>

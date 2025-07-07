@@ -14,6 +14,11 @@ import (
 )
 
 func GetTempUsers(w http.ResponseWriter, r *http.Request) {
+	/*
+		cursor, _ := db.TempUserCollection.Find(context.TODO(), map[string]interface{}{})
+		var users []models.TempUser
+		_ = cursor.All(context.TODO(), &users)
+		json.NewEncoder(w).Encode(users)  */
 	cur, err := db.TempUserCollection.Find(context.TODO(), bson.M{})
 	if err != nil {
 		http.Error(w, "Error fetching users", http.StatusInternalServerError)
@@ -34,7 +39,7 @@ func ApproveUser(w http.ResponseWriter, r *http.Request) {
 	var user models.TempUser
 	_ = json.NewDecoder(r.Body).Decode(&user)
 
-	// Insert to MySQL
+	// Insert/move to MySQL
 	_, err := db.MySQLDB.Exec(
 		"INSERT INTO users (name, email, password, role, course) VALUES (?, ?, ?, ?, ?)",
 		user.Name, user.Email, user.Password, user.Role, user.Course,
@@ -45,6 +50,7 @@ func ApproveUser(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Remove from MongoDB
+	// _, _ = db.TempUserCollection.DeleteOne(context.TODO(), map[string]interface{}{"email": user.Email})
 	_, _ = db.TempUserCollection.DeleteOne(context.TODO(), bson.M{"email": user.Email})
 
 	// to := user.Email
@@ -57,7 +63,7 @@ func ApproveUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func RejectUser(w http.ResponseWriter, r *http.Request) {
-	var payload struct {
+	var payload struct { // payload/input
 		Email string `json:"email"`
 	}
 	_ = json.NewDecoder(r.Body).Decode(&payload)

@@ -20,16 +20,19 @@ func main() {
 		w.Write([]byte("College Backend Running"))
 	})
 
+	// Auth
 	r.HandleFunc("/api/register-temp", handlers.RegisterTempUser).Methods("POST")
 	r.HandleFunc("/api/login", handlers.Login).Methods("POST")
 
 	r.HandleFunc("/api/notices", handlers.GetNotices).Methods("GET")
 
+	// Admin
 	r.HandleFunc("/api/admin/temp-users", handlers.GetTempUsers).Methods("GET")
 	r.HandleFunc("/api/admin/approve", handlers.ApproveUser).Methods("POST")
 	r.HandleFunc("/api/admin/reject", handlers.RejectUser).Methods("POST")
 
 	r.HandleFunc("/api/dashboard", JWTMiddleware(handlers.Dashboard)).Methods("GET")
+	r.HandleFunc("/api/dashboard", handlers.Dashboard).Methods("GET")
 
 	log.Println("Server running at :8080")
 	log.Fatal(http.ListenAndServe(":8080", r))

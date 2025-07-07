@@ -3,17 +3,26 @@ package handlers
 import (
 	"cms/db"
 	"cms/models"
+	"cms/utils"
 	"context"
 	"encoding/json"
 	"net/http"
-	"time"
-
-	"github.com/golang-jwt/jwt/v5"
 )
 
+// ⏳ Register to MongoDB (temporary storage)
 func RegisterTempUser(w http.ResponseWriter, r *http.Request) {
 	var user models.TempUser
 	_ = json.NewDecoder(r.Body).Decode(&user)
+
+	/*
+		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+		defer cancel()
+
+		count, _ := db.TempUserCollection.CountDocuments(ctx, map[string]interface{}{"email": user.Email})
+		if count > 0 {
+			http.Error(w, "User already registered", http.StatusConflict)
+			return
+		}*/
 
 	// Check for duplicate
 	var exists bool
@@ -25,6 +34,7 @@ func RegisterTempUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// _, err := db.TempUserCollection.InsertOne(ctx,user)
 	_, err := db.TempUserCollection.InsertOne(context.TODO(), user)
 	if err != nil {
 		http.Error(w, "Failed to save temp user", http.StatusInternalServerError)
@@ -32,21 +42,7 @@ func RegisterTempUser(w http.ResponseWriter, r *http.Request) {
 	}
 
 	json.NewEncoder(w).Encode(map[string]string{"message": "Registration submitted for approval"})
-}
-
-// Generate Token on Login
-var jwtKey = []byte("your-secret-key")
-
-func GenerateJWT(user models.User) (string, error) {
-	claims := jwt.MapClaims{
-		"email":  user.Email,
-		"role":   user.Role,
-		"course": user.Course,
-		"exp":    time.Now().Add(24 * time.Hour).Unix(),
-	}
-
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-	return token.SignedString(jwtKey)
+	// Registration successful, pending approval
 }
 
 func Login(w http.ResponseWriter, r *http.Request) {
@@ -62,7 +58,8 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	token, err := GenerateJWT(user)
+	// Generate Token on Login
+	token, _ := utils.GenerateJWT(user)
 	if err != nil {
 		http.Error(w, "Token error", http.StatusInternalServerError)
 		return

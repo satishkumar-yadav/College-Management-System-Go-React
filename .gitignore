@@ -12,6 +12,7 @@
 /backend/bin/
 
 # React
+/college-management-system/frontend/cms/node_modules/
 /frontend/node_modules
 /dist
 

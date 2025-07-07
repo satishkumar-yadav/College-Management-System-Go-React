@@ -12,6 +12,11 @@ type Notice struct {
 }
 
 func GetNotices(w http.ResponseWriter, r *http.Request) {
+	/*
+		cursor, _ := db.MongoClient.Database("college").Collection("notices").Find(context.TODO(), map[string]interface{}{})
+		var notices []map[string]interface{}
+		_ = cursor.All(context.TODO(), &notices)
+		json.NewEncoder(w).Encode(notices)   */
 	cur, err := db.TempUserCollection.Database().Collection("notices").Find(context.TODO(), map[string]interface{}{})
 	if err != nil {
 		http.Error(w, "Error fetching notices", http.StatusInternalServerError)

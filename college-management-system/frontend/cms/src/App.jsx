@@ -1,19 +1,17 @@
-// import AdminDashboard from './AdminDashboard';
-// import Dashboard from './Dashboard';
+
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import AdminPanel from './AdminDashboard';
+import Dashboard from './Dashboard';
 import Home from './Home';
 
-function App() {      // const App = () => {
-  // const [count, setCount] = useState(0);
-
-  // const [showModal,setShowModal]=useState(false);
-
+export default function App() {
   return (
-    <>
-     <Home/>
-        { /* <Dashboard/>  */ } 
-        { /* <AdminDashboard/>  */ } 
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
+  );
 }
-
-export default App
