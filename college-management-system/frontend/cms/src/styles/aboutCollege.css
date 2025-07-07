@@ -1,0 +1,20 @@
+.about-section {
+  padding: 40px 20px;
+  background-color: #f1f6f9;
+  color: #002147;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.about-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  font-size: 1rem;
+  margin: 15px 0;
+  line-height: 1.6;
+}

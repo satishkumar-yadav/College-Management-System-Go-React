@@ -1,0 +1,14 @@
+go get github.com/gorilla/mux
+go get github.com/joho/godotenv
+go get github.com/go-sql-driver/mysql
+// go get github.com/go-sql-driver/MySQL
+
+go get go.mongodb.org/mongo-driver/mongo
+go get go.mongodb.org/mongo-driver/mongo/options
+
+go get github.com/golang-jwt/jwt/v5
+
+
+
+# Allow readme file
+!README.md

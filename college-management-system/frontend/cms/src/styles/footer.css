@@ -1,0 +1,33 @@
+/* src/styles/footer.css */
+footer {
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.bottom-bar {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #002147;
+  color: white;
+}
+
+.college-logo {
+  height: 50px;
+  margin-right: 15px;
+}
+
+.college-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+
+
+/* Responsive (optional improvement) */
+@media (max-width: 768px) {
+  .bottom-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+}

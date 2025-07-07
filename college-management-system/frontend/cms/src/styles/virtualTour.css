@@ -1,0 +1,18 @@
+/* virtual.css */
+.virtual-tour {
+  padding: 40px;
+  background-color: #eef2f5;
+  text-align: center;
+}
+
+.video-container {
+  margin: 20px auto;
+  width: 80%;
+  height: 400px;
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

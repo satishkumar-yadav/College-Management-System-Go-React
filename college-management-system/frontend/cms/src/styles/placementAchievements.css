@@ -1,0 +1,26 @@
+.placement-section {
+  padding: 40px;
+  background: #fdfdfd;
+}
+
+.placement-section h2 {
+  color: #002147;
+  margin-top: 30px;
+}
+
+.placement-section ul {
+  list-style: disc inside;
+  padding-left: 20px;
+}
+
+.placement-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.placement-section th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}

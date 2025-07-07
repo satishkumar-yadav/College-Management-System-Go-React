@@ -1,0 +1,19 @@
+# Ignore docx files in root 
+/*.docx
+/Task.txt
+
+# Ignore env
+/college-management-system/.env
+
+# Go
+/backend/main
+/backend/main.exe
+/backend/bin/
+
+# Node
+/frontend/node_modules
+/dist
+
+# OS
+.DS_Store
+Thumbs.db
