@@ -4,13 +4,14 @@
 
 # Ignore env
 /college-management-system/.env
+/college-management-system/frontend/cms/hui.txt
 
 # Go
 /backend/main
 /backend/main.exe
 /backend/bin/
 
-# Node
+# React
 /frontend/node_modules
 /dist
 
