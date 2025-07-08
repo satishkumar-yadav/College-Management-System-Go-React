@@ -1,4 +1,4 @@
-# 🎓 College Management System (Full Stack)
+# 🎓 College Management System (React-Go Full Stack)
 
 Full stack college portal using React + Go + MySQL + MongoDB.
 
@@ -8,7 +8,7 @@ Full stack college portal using React + Go + MySQL + MongoDB.
 - ⚙️ Backend: Go (Golang)
 - 💾 Databases: MySQL (Main), MongoDB (Temporary Storage)
 - 🔐 Auth: JWT + Email (SMTP)
-- 📦 Dockerized
+- 📦 Dockerized later 
 
 ## 🗂️ Features
 
