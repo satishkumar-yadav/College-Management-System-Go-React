@@ -102,7 +102,7 @@ docker-compose up --build
 > http://your-aws-ec2-link
 
 ## 👨‍💻 Author
-- **Your Name** – [LinkedIn](https://www.linkedin.com/in/satishkumar-yadav) | [GitHub](https://github.com/satishkumar-yadav)
+- **Satish Kumar Yadav** – [LinkedIn](https://www.linkedin.com/in/satishkumar-yadav) | [GitHub](https://github.com/satishkumar-yadav)
 
 ## 📜 License
 MIT License
